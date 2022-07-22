@@ -5,7 +5,8 @@ const getLogin = require('../services/getLogin.js');
 /* GET programming languages. */
 router.post('/', async function(req, res, next) {
   try {
-    res.json(await getLogin.getLogin(req.body.email, req.body.pwd));
+    console.log(req.body)
+    res.json(await getLogin.getLogin(req.body.email, req.body.pass));
   } catch (err) {
     console.error(`Error while getting programming languages `, err.message);
     next(err);
