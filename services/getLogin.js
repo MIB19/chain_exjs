@@ -33,10 +33,14 @@ async function checkLogin(token) {
 }
 async function signUp(email, pass, nohp) {
   const enPass = sha512(pass)
-  const rows = await db.query(
-    `INSERT INTO login (email, pwd, notelp) VALUES ('${email}', '${enPass}', '${nohp}')`
-  )
-  return helper.emptyOrRows(rows)
+  try {
+    const rows = await db.query(
+      `INSERT INTO login (email, pwd, notelp) VALUES ('${email}', '${enPass}', '${nohp}')`
+    )
+    return { success: true, mesage: 'Data berhasil ditambahkan' }
+  } catch (error) {
+    return { success: false, mesage: error }
+  }
 }
 
 module.exports = {

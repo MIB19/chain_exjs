@@ -18,7 +18,6 @@ router.get('/check', async function(req, res, next) {
   }
 })
 router.post('/signup', async function(req, res, next) {
-  console.log('masuk')
   try {
     res.json(await getLogin.signUp(req.body.email, req.body.pass, req.body.nohp));
   } catch (err) {
